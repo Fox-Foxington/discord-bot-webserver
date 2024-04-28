@@ -1,1 +1,25 @@
-this is test
+
+// Connect to the PostgreSQL server
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack);
+  }
+  
+  // Query the information schema to get the list of databases
+  client.query('SELECT datname FROM pg_database WHERE datistemplate = false;', (err, result) => {
+    release(); // Release the client back to the pool
+  
+    if (err) {
+      return console.error('Error executing query', err.stack);
+    }
+    
+    // Print out the list of databases
+    console.log('List of databases:');
+    result.rows.forEach(row => {
+      console.log(row.datname);
+    });
+    
+    // Close the connection pool
+    pool.end();
+  });
+});
