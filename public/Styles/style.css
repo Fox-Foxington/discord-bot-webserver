@@ -1,0 +1,142 @@
+
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    background-color: #333;
+    padding-top: 20px;
+  }
+  
+
+  .side-nav a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+
+  .side-nav a:hover {
+    background-color: #555;
+  }
+  
+  /* Adjust content to avoid overlap */
+  .content {
+    margin-left: 220px; 
+    padding: 20px; 
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    background-color: DodgerBlue;
+  }
+  .flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+  }
+  .input-container {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 21px;
+    height: 21px\9;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+
+  .button-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start; 
+    margin-bottom: 10px;
+  }
+
+  .add-role-button {
+    background-color: #4caf50; 
+    color: #fff; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin-bottom: 5px; 
+    margin-right: 10px;
+    height: 26px;
+    height: 26px\9;
+  }
+
+  .delete-role-button {
+    background-color: #ff6347; 
+    color: #fff; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin-bottom: 5px; 
+    height: 26px;
+    height: 26px\9;
+  }
+
+  .add-role-button:hover,
+  .delete-role-button:hover {
+    opacity: 0.9; 
+  }
+
+  .role-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .role-form input,
+  .role-form select,
+  .role-form textarea {
+    flex-grow: 1;
+    padding: 5px;
+  }
+
+  .role-form button {
+    margin-top: 5px;
+  }
+  /*new test
+  .fancy-drop {
+    position: relative;
+    width: 200px;
+    height: 25px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .select-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 25px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .input-field {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 170px;
+    width: 180px\9; 
+    height: 21px;
+    height: 21px\9; 
+    border: 1px solid #556;
+  }*/

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Roles</title>
+    <link rel="stylesheet" href="/Styles/style.css" />
+ 
+  </head>
+  <body>
+    <div class="side-nav">
+      <a href="/">Home</a>
+      <a href="/roles">Roles</a>
+      <a href="/tickets">Tickets</a>
+      <a href="#">Link 4</a>
+      <a href="#">Link 5</a>
+      <a href="#">Link 6</a>
+      <a href="#">Link 7</a>
+      <a href="#">Link 8</a>
+      <a href="#">Link 9</a>
+      <a href="#">Link 10</a>
+    </div>
+
+   
+
+    <!-- Add Role Form -->
+    <div class="content">
+      <h1>Manage Roles</h1>
+      <div class="button-container">
+        
+        <div>
+        <form action="/manageRole" method="POST" id="roleForm">
+          
+          <div
+            class="fancy-drop"
+            style="
+              position: relative;
+              width: 200px;
+              height: 25px;
+              border: 0;
+              padding: 0;
+              margin: 0;
+              margin-right: 10px;
+            "
+          >
+            <select
+              style="
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 200px;
+                height: 25px;
+                line-height: 20px;
+                margin: 0;
+                padding: 0;
+              "
+              onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;"
+            >
+              <option></option>
+              <option value="">Select a role...</option>
+              <% roles.forEach(role => { %>
+                <option value="<%= role.id %>">
+                <%= role.role_name %>
+              </option>
+              <% }); %>
+            </select>
+            <input
+              type="text"
+              name="roleName"
+              id="displayValue"
+              placeholder="Add/Select a value"
+              onfocus="this.select()"
+              style="
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 170px;
+                width: 180px\9;
+                
+                height: 21px;
+                height: 21px\9;
+                
+                border: 1px solid #556;
+                
+              "
+            />
+            <input name="idValue" id="idValue" type="hidden" />
+          </div>
+          </div>
+
+         
+          <div class="input-container">
+            
+            <input
+              type="text"
+              id="roleEmoji"
+              name="roleEmoji"
+              placeholder="Enter role emoji..."
+              style="
+              height: 20px;
+              height: 20px\9;"
+            />
+          </div>
+          <div class="input-container">
+            <input
+              id="roleDescription"
+              name="roleDescription"
+              placeholder="Enter role description..."
+              style="
+              height: 20px;
+              height: 20px\9;"
+            ></input>
+          </div>
+          <!-- Add a hidden input to track the action -->
+
+          <input type="hidden" id="action" name="action" value="addRole" />
+          <div class="button-group">
+          <button
+            type="button"
+            class="add-role-button"
+            onclick="submitForm('addRole')"
+          >
+            Add Role
+          </button>
+          <!-- Delete Role Button -->
+          <button
+            type="button"
+            class="delete-role-button"
+            onclick="submitForm('deleteRole')"
+          >
+            Delete Role
+        </button>
+          </div>
+          <input type="hidden" id="roleId" name="roleId">
+        </form>
+      </div>
+    
+
+    <h2>Existing Roles</h2>
+    <ul>
+      <% roles.forEach(role => { %>
+      <li>
+        <strong><%= role.role_name %></strong>: <%= role.role_description %>
+      </li>
+      <% }); %>
+    </ul>
+    <script>
+// Function to submit the form based on action
+function submitForm(action) {
+  // Set the action value based on the button clicked
+  document.getElementById("action").value = action;
+
+  // If the action is 'deleteRole', get the selected role ID and set it in the form
+  if (action === 'deleteRole') {
+    const selectedRoleId = document.getElementById('idValue').value;
+    if (!selectedRoleId) {
+      alert('Please select a role to delete.');
+      return; // Exit the function if no role is selected
+    }
+    // Set the selected role ID in the hidden input field
+    document.getElementById("roleId").value = selectedRoleId;
+  }
+  
+  // Submit the form
+  document.getElementById("roleForm").submit();
+}
+    </script>
+    
+
+</div>
+    <!-- List of Existing Roles -->
+
+  </body>
+</html>

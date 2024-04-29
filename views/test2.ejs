@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Roles</title>
+    <link rel="stylesheet" href="/Styles/style.css" />
+  </head>
+  <body>
+    <div class="button-container">
+        <div>
+      <form action="/manageRole" method="POST" id="roleForm">
+        <div
+          class="fancy-drop"
+          style="
+            position: relative;
+            width: 200px;
+            height: 25px;
+            border: 0;
+            padding: 0;
+            margin: 0;
+          "
+        >
+          <select
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 200px;
+              height: 25px;
+              line-height: 20px;
+              margin: 0;
+              padding: 0;
+            "
+            onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;"
+          >
+            <option></option>
+            <option value="">Select a role...</option>
+            <% roles.forEach(role => { %>
+            <option value="<%= role.role_name %>"><%= role.role_name %></option>
+            <% }); %>
+          </select>
+          <input
+            type="text"
+            name="roleName"
+            id="displayValue"
+            placeholder="Add/Select a value"
+            onfocus="this.select()"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100px;
+              width: 180px\9;
+
+              height: 21px;
+              height: 21px\9;
+
+              border: 1px solid #556;
+            "
+          />
+          <input name="idValue" id="idValue" type="hidden" />
+        </div>
+        </div>
+
+        <div class="input-container">
+          2
+          <input
+            type="text"
+            id="roleCommand"
+            name="roleCommand"
+            style="position: relative"
+            placeholder="Enter role command..."
+          />
+        </div>
+
+        <div class="input-container">
+          > 3
+          <input
+            type="text"
+            id="roleEmoji"
+            name="roleEmoji"
+            placeholder="Enter role emoji..."
+          />
+        </div>
+
+        <div class="input-container">
+          <textarea
+            id="roleDescription"
+            name="roleDescription"
+            placeholder="Enter role description..."
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
